@@ -28,7 +28,7 @@ public class LendingApplicationServiceImpl implements LendingApplicationService 
     private static final Logger logger = LogManager.getLogger(LendingApplicationServiceImpl.class);
 
     @Autowired
-    @Qualifier("customerAPISSLRestTemplate")
+    @Qualifier("inbranchAPISSLRestTemplate")
     private RestTemplate httpsRestTemplate;
 
     @Inject

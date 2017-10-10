@@ -82,7 +82,16 @@ public class MigrationResource {
 
         String businessTin = recordArray[indexTin];
         String businessTinToken = null;
-        if (!StringUtils.isEmpty(businessTin) && !"".equalsIgnoreCase(businessTin)) {
+        boolean isBusinessTinEmpty = StringUtils.isEmpty(businessTin) || "\"\"".equalsIgnoreCase(businessTin);
+
+        String ssn = recordArray[indexSsn];
+        String ssnToken = null;
+        boolean isCustomerSSNEmpty = StringUtils.isEmpty(ssn) || "\"\"".equalsIgnoreCase(ssn);
+
+        String jsonDump = recordArray[indexJsonDump];
+        boolean isJsonDumpEmpty = StringUtils.isEmpty(jsonDump) || "\"\"".equalsIgnoreCase(jsonDump);
+
+        if (!isBusinessTinEmpty) {
             try {
                 // Invoke turing API for businessTin
                 businessTinToken = turingHandler.getTokenFromTuring(businessTin);
@@ -95,9 +104,7 @@ public class MigrationResource {
             recordArray[indexTin] = businessTinToken;
         }
 
-        String ssn = recordArray[indexSsn];
-        String ssnToken = null;
-        if (!StringUtils.isEmpty(ssn) && !"".equalsIgnoreCase(ssn)) {
+        if (!isCustomerSSNEmpty) {
             try {
                 // Invoke turing API for businessTin
                 ssnToken = turingHandler.getTokenFromTuring(ssn);
@@ -110,13 +117,12 @@ public class MigrationResource {
             recordArray[indexSsn] = ssnToken;
         }
 
-        String jsonDump = recordArray[indexJsonDump];
-        if (!StringUtils.isEmpty(jsonDump) && !"".equalsIgnoreCase(jsonDump)) {
-            if (!StringUtils.isEmpty(businessTin)) {
+        if (!isJsonDumpEmpty) {
+            if (!isBusinessTinEmpty) {
                 jsonDump = jsonDump.replaceAll(businessTin, businessTinToken);
             }
 
-            if (!StringUtils.isEmpty(ssn) && !"\"\"".equalsIgnoreCase(ssn)) {
+            if (!isCustomerSSNEmpty) {
                 jsonDump = jsonDump.replaceAll(ssn, ssnToken);
             }
             recordArray[indexJsonDump] = jsonDump;
