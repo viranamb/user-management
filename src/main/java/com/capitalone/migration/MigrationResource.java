@@ -60,16 +60,16 @@ public class MigrationResource {
 
             tokenizeAndReplaceValue(recordArray, i, indexTin, indexSsn, indexJsonDump);
 
-            saveRecord(authHeader, i, recordArray);
+            saveRecord(authHeader, i, recordArray, indexTin, indexSsn);
         }
 
         return new ResponseEntity<ResponseWrapper>(HttpStatus.OK);
     }
 
-    private void saveRecord(String authHeader, int i, String[] recordArray) throws Exception {
+    private void saveRecord(String authHeader, int i, String[] recordArray, Integer indexTin, Integer indexSsn) throws Exception {
         LOGGER.info("Saving record number " + (i + 1) + " of application data");
         try {
-            lendingApplicationService.submitApplication(authHeader, recordArray);
+            lendingApplicationService.submitApplication(authHeader, recordArray, indexTin, indexSsn);
         } catch (Exception e) {
             e.printStackTrace();
             LOGGER.info("Error saving record " + (i + 1) + " of application data");

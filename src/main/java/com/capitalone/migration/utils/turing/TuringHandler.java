@@ -29,6 +29,10 @@ public class TuringHandler {
 
     private static final Logger logger = LogManager.getLogger(TuringHandler.class);
 
+    private static final String SSN = "ssn";
+
+    private static final String CLIENT = "client";
+
     @Value("${api_endpoint.turing}")
     private String getTuringUrl;
 
@@ -41,10 +45,6 @@ public class TuringHandler {
 
     @Inject
     private ObjectMapper objectMapper;
-
-    private static final String SSN = "ssn";
-
-    private static final String CLIENT = "client";
 
     /**
      * Get the tokenized data from the Turing API
@@ -59,7 +59,7 @@ public class TuringHandler {
         TuringToken turingToken = null;
         ResponseEntity<?> response = null;
 
-        logger.info("Turing API URL in tokenize : {}"+ getTuringUrl);
+        logger.info("Turing API URL in tokenize : {}" + getTuringUrl);
         uri = UriComponentsBuilder.fromUriString(getTuringUrl).build(true).toUri();
 
         response = turingServiceLocator.exchange(uri, HttpMethod.POST, getHttpEntityForTuringToken(data), TuringToken.class);
@@ -69,8 +69,7 @@ public class TuringHandler {
             turingToken = (TuringToken) response.getBody();
             tokenizedId = turingToken.getTokenizedSsn();
             logger.debug("TokenizedSsn from Turing API in getTokenFromTuring : {}" + tokenizedId);
-        }
-        else {
+        } else {
             handleErrorsTuring(status, response);
             throw new Exception("System error");
         }
@@ -88,12 +87,11 @@ public class TuringHandler {
         Map<String, String> requestMap = new LinkedHashMap<String, String>();
         String apiBody = null;
         try {
-            logger.info("Turing client : {} in request to Turing"+ nsbCertTuring);
+            logger.info("Turing client : {} in request to Turing" + nsbCertTuring);
             requestMap.put(SSN, data);
             requestMap.put(CLIENT, nsbCertTuring);
             apiBody = objectMapper.writeValueAsString(requestMap);
-        }
-        catch (JsonProcessingException e) {
+        } catch (JsonProcessingException e) {
             logger.info("JsonProcessingException in TuringHandler.getHttpEntityForTuringToken", e);
             throw new Exception("JsonProcessingException in TuringHandler.getHttpEntityForTuringToken");
         }
@@ -109,10 +107,9 @@ public class TuringHandler {
     private void handleErrorsTuring(HttpStatus httpStatus, ResponseEntity<?> response) {
         TuringToken turingToken = (TuringToken) response.getBody();
         if (httpStatus == HttpStatus.BAD_REQUEST) {
-            logger.info("Invalid Turing Request status : {}, text : {}, detail : {}"+ turingToken.getId() + turingToken
+            logger.info("Invalid Turing Request status : {}, text : {}, detail : {}" + turingToken.getId() + turingToken
                     .getText() + turingToken.getDeveloperText());
-        }
-        else { // All other errors
+        } else { // All other errors
             logger.info("Error while calling Turing status : {} " + httpStatus);
         }
     }

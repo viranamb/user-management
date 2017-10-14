@@ -23,23 +23,23 @@ import java.security.cert.CertificateException;
 
 public final class SSLRestTemplateFactory {
 
-	private static final Logger LOGGER = LogManager.getLogger(SSLRestTemplateFactory.class);
+    private static final Logger LOGGER = LogManager.getLogger(SSLRestTemplateFactory.class);
 
-	private SSLRestTemplateFactory() {
-	}
+    private SSLRestTemplateFactory() {
+    }
 
     public static RestTemplate getSSLRestTemplate(String keyStoreFileName, String certificatePassword) throws Exception {
 
-    	FileSystemResource resource = new FileSystemResource(keyStoreFileName);
-		KeyStore keyStore;
-		try {
-			keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-			keyStore.load(resource.getInputStream(), certificatePassword.toCharArray());
-			return new RestTemplate(getSSLRequestFactory(keyStore, certificatePassword));
-		} catch (UnrecoverableKeyException | KeyManagementException | KeyStoreException | NoSuchAlgorithmException | CertificateException | IOException e) {
-			LOGGER.error("Unable to create RestTemplate, Missing or invalid keys" + e);
-			throw new Exception("Unable to create RestTemplate, Missing or invalid keys");
-		}
+        FileSystemResource resource = new FileSystemResource(keyStoreFileName);
+        KeyStore keyStore;
+        try {
+            keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            keyStore.load(resource.getInputStream(), certificatePassword.toCharArray());
+            return new RestTemplate(getSSLRequestFactory(keyStore, certificatePassword));
+        } catch (UnrecoverableKeyException | KeyManagementException | KeyStoreException | NoSuchAlgorithmException | CertificateException | IOException e) {
+            LOGGER.error("Unable to create RestTemplate, Missing or invalid keys" + e);
+            throw new Exception("Unable to create RestTemplate, Missing or invalid keys");
+        }
     }
 
     private static ClientHttpRequestFactory getSSLRequestFactory(KeyStore keyStore, String certificatePassword) throws KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException, KeyManagementException {

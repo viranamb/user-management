@@ -1,23 +1,23 @@
 package com.capitalone.migration.utils.turing;
 
 public class TuringToken {
-	
-	private String tokenizedSsn;
-    
+
+    private String tokenizedSsn;
+
     private String id;
 
     private String text;
 
     private String developerText;
-    
+
     public String getTokenizedSsn() {
-    	return tokenizedSsn;
+        return tokenizedSsn;
     }
-    
+
     public void setTokenizedSsn(String tokenizedSsn) {
-    	this.tokenizedSsn = tokenizedSsn;
+        this.tokenizedSsn = tokenizedSsn;
     }
-    
+
     public String getId() {
         return id;
     }

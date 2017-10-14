@@ -1,6 +1,6 @@
 /**
  * TODO - Describe purpose and operation of class.
- * 
+ * <p>
  * <table border="1" cellpadding="0" cellspacing="0" width="100%">
  * <caption align="center">Edit and Version History</caption>
  * <tr><th>Version</th><th>Date</th><th>Author</th><th>Description</th></tr>
@@ -38,11 +38,11 @@ public final class ServiceLocatorUtil {
 
     /**
      * Create HTTP request headers.
-     * 
+     *
      * @param versionNumber the version number
      * @param profileRefId the profile reference id
      * @param apiKey the API key to use
-     *  
+     *
      * @return the HTTP request entity.
      */
     public static HttpHeaders getHttpHeaders(String versionNumber, String profileRefId, String apiKey) {
@@ -63,7 +63,7 @@ public final class ServiceLocatorUtil {
 
     /**
      * Set the http headers for Turing API
-     * 
+     *
      * @return
      */
     public static HttpHeaders getHttpHeadersTokenize() {
