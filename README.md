@@ -8,7 +8,9 @@ Run locally: *mvn spring-boot:run -Drun.profiles=qa*
 
 Build Docker image: *docker build -t dockyardaws.cloud.capitalone.com/small-business-direct-lending/httpd:migration .*
 
-Run Docker image locally: *docker run -e "SPRING_PROFILES_ACTIVE=qa" -p 444:8443 -d dockyardaws.cloud.capitalone.com/small-business-direct-lending/httpd:migration*
+Run Docker image in QA or local system: *docker run -e "SPRING_PROFILES_ACTIVE=qa" -p 444:8443 -d dockyardaws.cloud.capitalone.com/small-business-direct-lending/httpd:migration*
+
+Run Docker image in PROD: *docker run -e "SPRING_PROFILES_ACTIVE=prod" -p 444:8443 -d dockyardaws.cloud.capitalone.com/small-business-direct-lending/httpd:migration*
 
 Copy dsv file from host machine to Docker container (Sample command): *docker cp /Users/msz519/export_copy.dsv c2119985e6c9:/export_copy.dsv*
 
