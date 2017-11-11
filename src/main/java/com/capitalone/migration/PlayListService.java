@@ -7,18 +7,23 @@
  * <tr><td>1.0</td><td>Aug 12, 2015</td><td>swx334</td><td>Initial creation.</td></tr>
  * </table>
  */
-package com.capitalone.migration.service;
+package com.capitalone.migration;
 
+import com.capitalone.migration.model.Playlist;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author swx334 -
  * @since 1.0
  */
 @Service
-public interface LendingApplicationService {
+public interface PlayListService {
 
-    void submitApplication(String authHeader, String[] lendingApplicationAuditDTO, Integer indexTin, Integer indexSsn) throws Exception;
+//    void submitApplication(String authHeader, String[] lendingApplicationAuditDTO, Integer indexTin, Integer indexSsn) throws Exception;
+
+    List<Playlist> retrievePlaylist(String contentIdentifier, String countryCode);
 }
 
 /*
