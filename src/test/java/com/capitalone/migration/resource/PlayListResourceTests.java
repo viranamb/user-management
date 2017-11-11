@@ -1,68 +1,101 @@
 package com.capitalone.migration.resource;
 
-import com.capitalone.migration.PlayListService;
-import com.capitalone.migration.model.Playlist;
-import org.junit.Assert;
+import com.capitalone.migration.LaunchApplication;
+import com.capitalone.migration.constants.Constants;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.List;
+import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-@ActiveProfiles(profiles = "non-prod")
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        classes = LaunchApplication.class)
+@AutoConfigureMockMvc
+@TestPropertySource(locations = "classpath:application-non-prod.properties")
 public class PlayListResourceTests {
 
     @Autowired
-    private PlayListService playListService;
+    private MockMvc mvc;
 
     @Test
     public void testLendingApplicationService_invalidContentIdentifier_returnFailure() {
-        List<Playlist> playlists = playListService.retrievePlaylist("Invalid content identifier", "US");
-
-        Assert.assertTrue(playlists == null);
+        try {
+            mvc.perform(get(Constants.PLAYLIST_RESOURCE_PATH)
+                    .param(Constants.CONTENT_IDENTIFIER, "")
+                    .param(Constants.COUNTRY_CODE, "US")
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk())
+                    .andExpect(content()
+                            .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                    .andExpect(jsonPath("status", is(400)))
+                    .andExpect(jsonPath("entity", is(Constants.INVALID_CONTENT_IDENTIFIER)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
     public void testLendingApplicationService_invalidCountryCode_returnFailure() {
-        List<Playlist> playlists = playListService.retrievePlaylist("MI3", "Invalid country code");
+        try {
+            mvc.perform(get(Constants.PLAYLIST_RESOURCE_PATH)
+                    .param(Constants.CONTENT_IDENTIFIER, "MI3")
+                    .param(Constants.COUNTRY_CODE, "")
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk())
+                    .andExpect(content()
+                            .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                    .andExpect(jsonPath("status", is(400)))
+                    .andExpect(jsonPath("entity", is(Constants.INVALID_COUNTRY_CODE)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        Assert.assertTrue(playlists.isEmpty());
     }
 
     @Test
-    public void testLendingApplicationService_validInputForUS_returnSuccess() {
-        List<Playlist> playlists = playListService.retrievePlaylist("MI3", "US");
+    public void testLendingApplicationService_legalPlayListNotPossible_returnFailure() {
+        try {
+            mvc.perform(get(Constants.PLAYLIST_RESOURCE_PATH)
+                    .param(Constants.CONTENT_IDENTIFIER, "MI3")
+                    .param(Constants.COUNTRY_CODE, "US")
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk())
+                    .andExpect(content()
+                            .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                    .andExpect(jsonPath("status", is(400)))
+                    .andExpect(jsonPath("entity", is(Constants.LEGAL_PLAYLIST_NOT_POSSIBLE)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        Assert.assertTrue(playlists.isEmpty());
     }
 
     @Test
-    public void testLendingApplicationService_validInputForUK_returnSuccess() {
-        List<Playlist> playlists = playListService.retrievePlaylist("MI3", "UK");
+    public void testLendingApplicationService_invalidDataForPlayList_returnFailure() {
+        try {
+            mvc.perform(get(Constants.PLAYLIST_RESOURCE_PATH)
+                    .param(Constants.CONTENT_IDENTIFIER, "MI1")
+                    .param(Constants.COUNTRY_CODE, "US")
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk())
+                    .andExpect(content()
+                            .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                    .andExpect(jsonPath("status", is(400)))
+                    .andExpect(jsonPath("entity", is(Constants.INVALID_DATA_FOR_PLAYLIST)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        Assert.assertNotNull(playlists);
     }
-
-    @Test
-    public void testLendingApplicationService_validInputForCA_returnSuccess() {
-        List<Playlist> playlists = playListService.retrievePlaylist("MI3", "CA");
-
-        Assert.assertNotNull(playlists);
-        Assert.assertEquals(playlists.size(), 1);
-        Assert.assertEquals(playlists.get(0).getVideos().size(), 1);
-    }
-
-    @Test
-    public void testLendingApplicationService_validInputForUK2_returnSuccess() {
-        List<Playlist> playlists = playListService.retrievePlaylist("MI4", "UK");
-
-        Assert.assertNotNull(playlists);
-        Assert.assertEquals(playlists.size(), 2);
-    }
-
 }

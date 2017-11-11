@@ -1,5 +1,5 @@
 FROM dockyardaws.cloud.capitalone.com/digital_product_engineering/java8
-MAINTAINER Vishwa <vishwajeet.nambiar@capitalone.com>
+MAINTAINER Vishwa <nambiarvishwajeet@gmail.com>
 
 ADD */data-migration-0.0.1-SNAPSHOT.jar app.jar
 

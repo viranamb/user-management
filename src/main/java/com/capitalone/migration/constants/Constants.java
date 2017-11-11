@@ -18,6 +18,14 @@ public final class Constants {
 
     public static final String ASPECT = "aspect";
 
+    // Response messages
+    public static final String INVALID_DATA_FOR_PLAYLIST = "Playlist cannot be created for provided inputs";
+
+    public static final String INVALID_CONTENT_IDENTIFIER = "Invalid content identifier passed";
+
+    public static final String INVALID_COUNTRY_CODE = "Invalid country code passed";
+
+    public static final String LEGAL_PLAYLIST_NOT_POSSIBLE = "No legal playlist possible because the Pre-Roll Video isn't compatible with the aspect ratio of the Content Video";
 
     private Constants() {
         // empty constructor for SonarQube analysis

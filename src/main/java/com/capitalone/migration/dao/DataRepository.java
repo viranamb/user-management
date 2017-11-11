@@ -1,7 +1,6 @@
 package com.capitalone.migration.dao;
 
 import com.capitalone.migration.constants.Constants;
-import com.capitalone.migration.model.Aggregate;
 import com.capitalone.migration.model.Content;
 import com.capitalone.migration.model.PreRoll;
 import com.google.gson.Gson;
@@ -24,11 +23,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * This class acts as the data repository for all of the content and pre-roll information. The data is loaded into memory during application startup.
+ * This class acts as the data repository for all of the content and pre-roll information. The data is loaded into memory
+ * during application startup.
+ *
  * To prevent running out of memory, we load this information from a JSON document in a sequence of tokens.
  * Since the streams operate on one token at a time, this ensures that the memory overhead is minimal.
- *
- * Created by msz519 on 11/9/17.
  */
 @Component
 public class DataRepository {
@@ -44,7 +43,6 @@ public class DataRepository {
 
     @EventListener(ContextRefreshedEvent.class)
     void contextRefreshedEvent() {
-        Aggregate aggregate = new Aggregate();
         List<Content> contentList = new ArrayList<>();
         List<PreRoll> prerollList = new ArrayList<>();
 
@@ -86,18 +84,26 @@ public class DataRepository {
             }
         }
 
-        aggregate.setContent(contentList);
-        aggregate.setPreroll(prerollList);
-        // Create 2 maps with key --> Content in one and key --> Preroll in the other. Value --> list of videos for both maps.
+        constructInMemoryDataMaps(contentList, prerollList);
+    }
 
-        // Using a map will ensure that the time complexity of the retrieve operation for content is O(1) and hence performance of the API will improve greatly.
-        // The trade-off with this approach is longer server startup time to generate the required maps, but using blue-green deployments on AWS, we can safely ensure that,
-        // in the event of having to relaunch a new server, we could ensure zero downtime and switch traffic to the server only after the server is fully started.
-
-        // Using a ParallelStream instead of Stream so that the mapping is faster. Even though Parallel stream has some potential performance issues, since the mapping below
-        // is a one-time activity occurring during only server startup, it's worth the trade-off
-        contentListMap = aggregate.getContent().parallelStream().collect(Collectors.toConcurrentMap(content -> content.getName(), content -> content));
-        preRollListMap = aggregate.getPreroll().parallelStream().collect(Collectors.toConcurrentMap(preRoll -> preRoll.getName(), preRoll -> preRoll));
+    /**
+     * Create 2 maps with key --> Content name in one and key --> Preroll name in the other.
+     * Value --> list of videos for both maps.
+     *
+     * Using a map will ensure that the time complexity of the retrieve operation for content is O(1) and hence performance of the API will improve greatly.
+     * The trade-off with this approach is longer server startup time to generate the required maps, but using blue-green deployments on AWS, we can safely ensure that,
+     * in the event of having to relaunch a new server, we could ensure zero downtime and switch traffic to the server only after the server is fully started.
+     *
+     * Using a ParallelStream instead of Stream so that the mapping is faster. Even though Parallel stream has some potential performance issues, since the mapping below
+     * is a one-time activity occurring during only server startup, it's worth the trade-off
+     *
+     * @param contentList
+     * @param prerollList
+     */
+    private void constructInMemoryDataMaps(List<Content> contentList, List<PreRoll> prerollList) {
+        contentListMap = contentList.parallelStream().collect(Collectors.toConcurrentMap(content -> content.getName(), content -> content));
+        preRollListMap = prerollList.parallelStream().collect(Collectors.toConcurrentMap(preRoll -> preRoll.getName(), preRoll -> preRoll));
     }
 
     public Content getContent(String contentIdentifier){
