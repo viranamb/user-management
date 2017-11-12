@@ -1,8 +1,12 @@
-Docker commands
+Maven commands
 
-Build : *clean install -Dspring.profiles.active=non-prod*
+Build : *mvn clean install -Dspring.profiles.active=non-prod*
 
 Run locally: *mvn spring-boot:run -Drun.profiles=non-prod*
+
+
+
+Docker commands
 
 Build Docker image (sample): *docker build -t playlists .*
 
