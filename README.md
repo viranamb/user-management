@@ -3,7 +3,7 @@
                 JDK 8, Spring boot, Docker, Maven, Mockito/JUnit, Gson
  
  
- 3 ways to run and test the application viz.
+ 4 ways to run and test the application viz.
 
    1) Running locally using maven and test by running the 'PlaylistResourceTests' integration test class.
               
