@@ -8,7 +8,7 @@ ADD content_preroll.json content_preroll.json
 RUN sh -c 'touch /app.jar'
 
 # expose standard http/https ports
-EXPOSE 8080
+EXPOSE 8443 8080
 
 # expose jmx ports for monitoring
 EXPOSE 11400 11401 11402
