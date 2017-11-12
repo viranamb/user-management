@@ -1,10 +1,9 @@
 FROM dockyardaws.cloud.capitalone.com/digital_product_engineering/java8
 MAINTAINER Vishwa <nambiarvishwajeet@gmail.com>
 
-ADD */data-migration-0.0.1-SNAPSHOT.jar app.jar
+ADD */playlist-0.0.1-SNAPSHOT.jar app.jar
 
-ADD rtmqa-clientid.jks rtmqa-clientid.jks
-ADD rdt-nsb-turing.jks rdt-nsb-turing.jks
+ADD sample.json sample.json
 
 RUN sh -c 'touch /app.jar'
 

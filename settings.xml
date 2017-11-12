@@ -131,11 +131,11 @@ under the License.
         </server>
         -->
 
-        <server>
-            <id>nexus</id>
-            <username>AWjtvOAj</username>
-            <password>N3d7XdwmX2jXk8uNrxPwqO8SIPjAUlIRowJZ8Y63wnXe</password>
-        </server>
+        <!--<server>-->
+            <!--<id>nexus</id>-->
+            <!--<username>AWjtvOAj</username>-->
+            <!--<password>N3d7XdwmX2jXk8uNrxPwqO8SIPjAUlIRowJZ8Y63wnXe</password>-->
+        <!--</server>-->
 
 
     </servers>
@@ -164,12 +164,12 @@ under the License.
           <url>http://my.repository.com/repo/path</url>
         </mirror>
          -->
-        <mirror>
-            <!--This sends everything else to /public -->
-            <id>resolution</id>
-            <mirrorOf>*</mirrorOf>
-            <url>https://nexus.kdc.capitalone.com/nexus/content/groups/CLM</url>
-        </mirror>
+        <!--<mirror>-->
+            <!--&lt;!&ndash;This sends everything else to /public &ndash;&gt;-->
+            <!--<id>resolution</id>-->
+            <!--<mirrorOf>*</mirrorOf>-->
+            <!--<url>https://nexus.kdc.capitalone.com/nexus/contentDO/groups/CLM</url>-->
+        <!--</mirror>-->
     </mirrors>
 
     <!-- profiles
@@ -195,82 +195,82 @@ under the License.
      |-->
     <profiles>
 
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <!--             <properties> -->
-            <!--                 EXAMPLE FOR MYSQL -->
-            <!--                 <sonar.jdbc.url> -->
-            <!--                         jdbc:oracle:thin:@DESMOND:1540:DEPF -->
-            <!--                 </sonar.jdbc.url> -->
-            <!--                 <sonar.jdbc.driverClassName>oracle.jdbc.driver.OracleDriver</sonar.jdbc.driverClassName> -->
-            <!--                 <sonar.jdbc.username>sonar_app</sonar.jdbc.username> -->
-            <!--                 <sonar.jdbc.password>dS0nar02</sonar.jdbc.password> -->
+        <!--<profile>-->
+            <!--<id>sonar</id>-->
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+            <!--&lt;!&ndash;             <properties> &ndash;&gt;-->
+            <!--&lt;!&ndash;                 EXAMPLE FOR MYSQL &ndash;&gt;-->
+            <!--&lt;!&ndash;                 <sonar.jdbc.url> &ndash;&gt;-->
+            <!--&lt;!&ndash;                         jdbc:oracle:thin:@DESMOND:1540:DEPF &ndash;&gt;-->
+            <!--&lt;!&ndash;                 </sonar.jdbc.url> &ndash;&gt;-->
+            <!--&lt;!&ndash;                 <sonar.jdbc.driverClassName>oracle.jdbc.driver.OracleDriver</sonar.jdbc.driverClassName> &ndash;&gt;-->
+            <!--&lt;!&ndash;                 <sonar.jdbc.username>sonar_app</sonar.jdbc.username> &ndash;&gt;-->
+            <!--&lt;!&ndash;                 <sonar.jdbc.password>dS0nar02</sonar.jdbc.password> &ndash;&gt;-->
 
-            <!--                 optional URL to server. Default value is http://localhost:9000 -->
-            <!--                 <sonar.host.url> -->
-            <!--                   http://vantage:11300/sonar -->
-            <!--                 </sonar.host.url> -->
-            <!--             </properties> -->
-            <properties>
-                <sonar.host.url>https://sonaraws.kdc.capitalone.com</sonar.host.url>
-                <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
-                <sonar.analysis.mode>publish</sonar.analysis.mode>
-                <sonar.github.endpoint>https://github.kdc.capitalone.com/api/v3</sonar.github.endpoint>
-                <sonar.github.repository>Small-Business-Technology-Lending/digital-lending-api</sonar.github.repository>
-                <sonar.exclusions>
-                    src/main/java/com/capitalone/sbdl/constants/**,
-                    src/main/java/com/capitalone/sbdl/dto/**,
-                    src/main/java/com/capitalone/sbdl/exception/**,
-                    src/main/java/com/capitalone/sbdl/session/**,
-                    src/main/java/com/capitalone/sbdl/turing/**,
-                    src/main/java/com/capitalone/sbdl/utils/**
-                </sonar.exclusions>
-                <!--                 <sonar.github.oauth>${githubAccessToken}</sonar.github.oauth> -->
-                <!--                 <sonar.github.pullRequest>${ghprbPullId}</sonar.github.pullRequest> -->
-            </properties>
-        </profile>
+            <!--&lt;!&ndash;                 optional URL to server. Default value is http://localhost:9000 &ndash;&gt;-->
+            <!--&lt;!&ndash;                 <sonar.host.url> &ndash;&gt;-->
+            <!--&lt;!&ndash;                   http://vantage:11300/sonar &ndash;&gt;-->
+            <!--&lt;!&ndash;                 </sonar.host.url> &ndash;&gt;-->
+            <!--&lt;!&ndash;             </properties> &ndash;&gt;-->
+            <!--<properties>-->
+                <!--&lt;!&ndash;<sonar.host.url>https://sonaraws.kdc.capitalone.com</sonar.host.url>&ndash;&gt;-->
+                <!--&lt;!&ndash;<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>&ndash;&gt;-->
+                <!--&lt;!&ndash;<sonar.analysis.mode>publish</sonar.analysis.mode>&ndash;&gt;-->
+                <!--&lt;!&ndash;<sonar.github.endpoint>https://github.kdc.capitalone.com/api/v3</sonar.github.endpoint>&ndash;&gt;-->
+                <!--&lt;!&ndash;<sonar.github.repository>Small-Business-Technology-Lending/digital-lending-api</sonar.github.repository>&ndash;&gt;-->
+                <!--&lt;!&ndash;<sonar.exclusions>&ndash;&gt;-->
+                    <!--&lt;!&ndash;src/main/java/com/capitalone/sbdl/constants/**,&ndash;&gt;-->
+                    <!--&lt;!&ndash;src/main/java/com/capitalone/sbdl/dto/**,&ndash;&gt;-->
+                    <!--&lt;!&ndash;src/main/java/com/capitalone/sbdl/exception/**,&ndash;&gt;-->
+                    <!--&lt;!&ndash;src/main/java/com/capitalone/sbdl/session/**,&ndash;&gt;-->
+                    <!--&lt;!&ndash;src/main/java/com/capitalone/sbdl/turing/**,&ndash;&gt;-->
+                    <!--&lt;!&ndash;src/main/java/com/capitalone/sbdl/utils/**&ndash;&gt;-->
+                <!--&lt;!&ndash;</sonar.exclusions>&ndash;&gt;-->
+                <!--&lt;!&ndash;                 <sonar.github.oauth>${githubAccessToken}</sonar.github.oauth> &ndash;&gt;-->
+                <!--&lt;!&ndash;                 <sonar.github.pullRequest>${ghprbPullId}</sonar.github.pullRequest> &ndash;&gt;-->
+            <!--</properties>-->
+        <!--</profile>-->
 
-        <profile>
-            <id>nexus</id>
-            <!--Enable snapshots for the built in central repo to direct -->
-            <!--all requests to nexus via the mirror -->
-            <properties>
-                <releases.url>https://nexus.kdc.capitalone.com/mother/service/local/staging/deploy/maven2</releases.url>
-                <snapshots.url>https://nexus.kdc.capitalone.com/mother/content/repositories/snapshots</snapshots.url>
-                <svn.url>https://subversion.kdc.capitalone.com</svn.url>
-                <nexus.url>https://nexus.kdc.capitalone.com/mother</nexus.url>
-                <site.url>https://nexus.kdc.capitalone.com/mother/content/sites/Maven-Site</site.url>
+        <!--<profile>-->
+            <!--<id>nexus</id>-->
+            <!--&lt;!&ndash;Enable snapshots for the built in central repo to direct &ndash;&gt;-->
+            <!--&lt;!&ndash;all requests to nexus via the mirror &ndash;&gt;-->
+            <!--<properties>-->
+                <!--<releases.url>https://nexus.kdc.capitalone.com/mother/service/local/staging/deploy/maven2</releases.url>-->
+                <!--<snapshots.url>https://nexus.kdc.capitalone.com/mother/contentDO/repositories/snapshots</snapshots.url>-->
+                <!--<svn.url>https://subversion.kdc.capitalone.com</svn.url>-->
+                <!--<nexus.url>https://nexus.kdc.capitalone.com/mother</nexus.url>-->
+                <!--<site.url>https://nexus.kdc.capitalone.com/mother/contentDO/sites/Maven-Site</site.url>-->
 
-            </properties>
+            <!--</properties>-->
 
-            <repositories>
-                <repository>
-                    <id>central</id>
-                    <url>http://central</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>central</id>
-                    <url>http://central</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
+            <!--<repositories>-->
+                <!--<repository>-->
+                    <!--<id>central</id>-->
+                    <!--<url>http://central</url>-->
+                    <!--<releases>-->
+                        <!--<enabled>true</enabled>-->
+                    <!--</releases>-->
+                    <!--<snapshots>-->
+                        <!--<enabled>true</enabled>-->
+                    <!--</snapshots>-->
+                <!--</repository>-->
+            <!--</repositories>-->
+            <!--<pluginRepositories>-->
+                <!--<pluginRepository>-->
+                    <!--<id>central</id>-->
+                    <!--<url>http://central</url>-->
+                    <!--<releases>-->
+                        <!--<enabled>true</enabled>-->
+                    <!--</releases>-->
+                    <!--<snapshots>-->
+                        <!--<enabled>true</enabled>-->
+                    <!--</snapshots>-->
+                <!--</pluginRepository>-->
+            <!--</pluginRepositories>-->
+        <!--</profile>-->
         <!-- profile
          | Specifies a set of introductions to the build process, to be activated using one or more of the
          | mechanisms described above. For inheritance purposes, and to activate profiles via <activatedProfiles/>
@@ -345,8 +345,8 @@ under the License.
       <activeProfile>anotherAlwaysActiveProfile</activeProfile>
     </activeProfiles>
     -->
-    <activeProfiles>
-        <!--make the profile active all the time -->
-        <activeProfile>nexus</activeProfile>
-    </activeProfiles>
+    <!--<activeProfiles>-->
+        <!--&lt;!&ndash;make the profile active all the time &ndash;&gt;-->
+        <!--<activeProfile>nexus</activeProfile>-->
+    <!--</activeProfiles>-->
 </settings>
