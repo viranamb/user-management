@@ -12,7 +12,7 @@
               
                Run locally: mvn spring-boot:run -Drun.profiles=non-prod
 
-   2) Running 'LaunchApplication' class as a Spring boot configuration with profile set as 'non-prod' (configuration image has been uploaded to repo)
+   2) Running 'LaunchApplication' class as a Spring boot configuration with profile set as 'non-prod' (for reference, 'LaunchApplication.png' image has been uploaded to repo)
    
    3) Running locally using maven and test by running Postman scripts (scripts have been uploaded to repo)
    
