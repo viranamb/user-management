@@ -5,15 +5,16 @@
  
  3 ways to run and test the application viz.
 
-   1) Running locally using maven and test by running the PlaylistResourceTests integration test class.
+   1) Running locally using maven and test by running the 'PlaylistResourceTests' integration test class.
               
               
                Build : mvn clean install -Dspring.profiles.active=non-prod
               
                Run locally: mvn spring-boot:run -Drun.profiles=non-prod
 
-
-   2) Running locally using maven and test by running Postman scripts (scripts have been uploaded to git repo)
+   2) Running 'LaunchApplication' class as a Spring boot configuration with profile set as 'non-prod' (configuration image has been uploaded to repo)
+   
+   3) Running locally using maven and test by running Postman scripts (scripts have been uploaded to repo)
    
    
                Build : mvn clean install -Dspring.profiles.active=non-prod
@@ -21,7 +22,7 @@
                Run locally: mvn spring-boot:run -Drun.profiles=non-prod
 
 
-   3) Create a docker image of the application and test by running Postman scripts (scripts have been uploaded to git repo)
+   4) Create a docker image of the application and test by running Postman scripts (scripts have been uploaded to git repo)
    
    
                Build : mvn clean install -Dspring.profiles.active=non-prod
