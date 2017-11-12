@@ -1,0 +1,318 @@
+{
+	"id": "82667e50-07f6-d736-4c10-6c4579fd2a21",
+	"name": "Playlists",
+	"description": "",
+	"order": [
+		"2985c4e0-a094-55d6-788e-e9eff786d7aa",
+		"2fc7a33e-b390-9ded-3675-6fdd152aadfb",
+		"176ac163-28a1-7cb5-8e41-011494a66b46",
+		"1125fdc0-9eeb-588c-f9f4-8794879ec21b",
+		"755cf120-2f27-2cb1-0d23-ca78b7b8c88b",
+		"c7a6e567-e3dc-0596-b254-699c8cba1529",
+		"e1ff9b84-fb67-b825-a355-11ef35dd53f6",
+		"de4bc767-daa0-3015-e1ef-50ca22f7b6b0"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1510472278966,
+	"owner": "925372",
+	"public": false,
+	"requests": [
+		{
+			"id": "1125fdc0-9eeb-588c-f9f4-8794879ec21b",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/playlists?contentIdentifier=MI4&countryCode=CA",
+			"queryParams": [
+				{
+					"key": "contentIdentifier",
+					"value": "MI4",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "countryCode",
+					"value": "CA",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1510472647222,
+			"name": "CA Playlists (MI4)",
+			"description": "",
+			"collectionId": "82667e50-07f6-d736-4c10-6c4579fd2a21",
+			"responses": []
+		},
+		{
+			"id": "176ac163-28a1-7cb5-8e41-011494a66b46",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/playlists?contentIdentifier=MI3&countryCode=CA",
+			"queryParams": [
+				{
+					"key": "contentIdentifier",
+					"value": "MI3",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "countryCode",
+					"value": "CA",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1510472553188,
+			"name": "CA Playlists (MI3)",
+			"description": "",
+			"collectionId": "82667e50-07f6-d736-4c10-6c4579fd2a21",
+			"responses": []
+		},
+		{
+			"id": "2985c4e0-a094-55d6-788e-e9eff786d7aa",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/playlists?contentIdentifier=MI3&countryCode=UK",
+			"queryParams": [
+				{
+					"key": "contentIdentifier",
+					"value": "MI3",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "countryCode",
+					"value": "UK",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1510472547875,
+			"name": "UK Playlists (MI3)",
+			"description": "",
+			"collectionId": "82667e50-07f6-d736-4c10-6c4579fd2a21",
+			"responses": []
+		},
+		{
+			"id": "2fc7a33e-b390-9ded-3675-6fdd152aadfb",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/playlists?contentIdentifier=MI4&countryCode=UK",
+			"queryParams": [
+				{
+					"key": "contentIdentifier",
+					"value": "MI4",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "countryCode",
+					"value": "UK",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1510472593517,
+			"name": "UK Playlists (MI4)",
+			"description": "",
+			"collectionId": "82667e50-07f6-d736-4c10-6c4579fd2a21",
+			"responses": []
+		},
+		{
+			"id": "755cf120-2f27-2cb1-0d23-ca78b7b8c88b",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/playlists?contentIdentifier=MI3&countryCode=US",
+			"queryParams": [
+				{
+					"key": "contentIdentifier",
+					"value": "MI3",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "countryCode",
+					"value": "US",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1510472541850,
+			"name": "US Playlists (MI3)",
+			"description": "",
+			"collectionId": "82667e50-07f6-d736-4c10-6c4579fd2a21",
+			"responses": []
+		},
+		{
+			"id": "c7a6e567-e3dc-0596-b254-699c8cba1529",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/playlists?contentIdentifier=MI4&countryCode=US",
+			"queryParams": [
+				{
+					"key": "contentIdentifier",
+					"value": "MI4",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "countryCode",
+					"value": "US",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1510472758620,
+			"name": "US Playlists (MI4)",
+			"description": "",
+			"collectionId": "82667e50-07f6-d736-4c10-6c4579fd2a21",
+			"responses": []
+		},
+		{
+			"id": "de4bc767-daa0-3015-e1ef-50ca22f7b6b0",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/playlists?contentIdentifier=MI3&countryCode=US34",
+			"queryParams": [
+				{
+					"key": "contentIdentifier",
+					"value": "MI3",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "countryCode",
+					"value": "US34",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1510472566877,
+			"name": "Invalid Country Code",
+			"description": "",
+			"collectionId": "82667e50-07f6-d736-4c10-6c4579fd2a21",
+			"responses": []
+		},
+		{
+			"id": "e1ff9b84-fb67-b825-a355-11ef35dd53f6",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/playlists?contentIdentifier=MI67&countryCode=US",
+			"queryParams": [
+				{
+					"key": "contentIdentifier",
+					"value": "MI67",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "countryCode",
+					"value": "US",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1510472561344,
+			"name": "Invalid Content Identifier",
+			"description": "",
+			"collectionId": "82667e50-07f6-d736-4c10-6c4579fd2a21",
+			"responses": []
+		}
+	]
+}
