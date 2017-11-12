@@ -21,7 +21,7 @@
    
                Build : mvn clean install -Dspring.profiles.active=non-prod
                
-               Build Docker image (sample): docker build -t playlists .
+               Build Docker image (tag will be 'latest' by default): docker build -t playlists .
                
                Run Docker image in non-prod or local system (sample): docker run -e "SPRING_PROFILES_ACTIVE=non-prod" -p 8080:8080 -d playlists:latest
       
