@@ -1,6 +1,6 @@
- Primary tools/frameworks used: 
- 
-                JDK 8, Spring boot, Docker, Maven, Mockito/JUnit, Gson
+REST-based microservice utilizing JDK 8, Spring boot, Docker, Maven, Mockito/JUnit, Gson.
+
+Primary tools/frameworks used: JDK 8, Spring boot, Docker, Maven, Mockito/JUnit, Gson
  
  
  4 ways to run and test the application viz.
@@ -43,4 +43,3 @@ Push Docker image (sample):
 Pull Docker image (sample):
 
                   *docker pull playlists*
-
