@@ -1,0 +1,53 @@
+Program that will take a content code and a country code as input and return matching valid playlists.
+
+* Object Models
+
+  (Relevant classes are in 'model' package)
+  4 Object models viz. Content, Preroll, Video and Playlist
+  Content and Preroll have a relationship based on aggregation (as both can exist independently but are associated as well)
+  Content/Preroll and Video have a relationship based on composition (as a video has to be attached to either Content or Preroll)
+
+* In-memory data
+  (Relevant classes are in 'dao' package)
+    The data is loaded into memory during application startup. To prevent running out of memory in the event the JSON file is large, we load this information from a JSON document in a sequence of tokens.
+    Since the streams operate on one token at a time, this ensures that the memory overhead is minimal.
+
+  The project has necessary configuration to be dockerized and used across environments. Docker makes it easy to create, deploy,
+  and run applications by using containers which can package an application with all of it's dependencies. This allows the application to
+  be executed on any other Linux machine and ensuring very fast deployment and consistent experience across environments
+
+  For this code to be production-ready, it should be able to handle large volumes of traffic with consistent performance and security.
+
+  From the application perspective, the API has been written to support high volumes by enabling asynchronous requests and thread pools.
+  Also, the initial in-memory loading of data into memory has been done in a manner so as to prevent out-of-memory issues.
+  The API has also been written to be as stateless as possible (apart from the in-memory data that is loaded at server startup)
+  so that horizontal scaling is easily achieved during spikes in volumes of incoming requests.
+  From the security perspective, all communication has to be done strictly using HTTPS protocol (ideally with 2-way SSL) and proper authentication/authorization
+  of the client using OAuth or related approach.
+
+  From the infrastructure perspective, the ECS/EC2 instances need to be fronted by a load balancer and auto-scaling groups need to
+  be set up to allow for automated addition of EC2 instances in the event of high volumes. Also, appropriate monitoring tools such as Splunk,
+   New Relic and the like could be set up with appropriate automated alerts.
+
+* Testing
+  4 ways to test the application viz.
+
+   1. Running locally using maven and test by running the 'PlaylistResourceTests' integration test class. 
+   2. Running 'LaunchApplication' class as a Spring boot configuration with profile set as 'non-prod' (for reference, 'LaunchApplication.png' image has been uploaded to repo) 
+   3. Running locally using maven and test by running Postman scripts (scripts have been uploaded to repo) 
+   4. Create a docker image of the application and test by running Postman scripts (scripts have been uploaded to git repo) 
+
+* Assumptions
+    A given video is not reused for more than one content or preroll
+    For a given content, there cannot be more than one video with the same combination of language, country and aspect ratio
+    For a given content, there can be more than one preroll with the same combination of language, country and aspect ratio
+    Playlists need to have combinations of pre-roll and content videos
+    Playlists with only content videos are not valid and cannot be returned
+    Playlists with just pre-roll videos are not valid and cannot be returned
+
+* Concurrency
+    The API uses ConcurrentHashMap ensure optimized performance along with thread-safety. Since the current use-case has only read operations,
+    even a regular Hashmap without the overhead of synchronization would suffice, but using a ConcurrentMap allows for extensibility and
+    flexibility if we need to add write operations in future.
+    The API also uses thread pools and has enabled asynchronous requests so that playlist computation logic can be executed in a
+    separate thread, thus freeing up the server to allow more incoming client requests.

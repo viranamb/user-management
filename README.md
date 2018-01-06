@@ -8,19 +8,18 @@
    1) Running the 'PlaylistResourceTests' integration test class.              
             
 
-   2) Running 'LaunchApplication' class as a Spring boot configuration with profile set as 'non-prod' (for reference, 'LaunchApplication.png' image has been uploaded to repo) and then test using Postman scripts (scripts have been uploaded to repo)
+   2) Running 'LaunchApplication' class as a Spring boot configuration with profile set as 'non-prod' (for reference, 'LaunchApplication.png' image has been uploaded to repo)
+        and then test using Postman scripts (scripts have been uploaded to repo)
    
    3) Running locally using maven and test by running Postman scripts
-   
-   
+
                Build : mvn clean install -Dspring.profiles.active=non-prod
               
                Run locally: mvn spring-boot:run -Drun.profiles=non-prod
 
 
    4) Create a docker image of the application and test by running Postman scripts (scripts have been uploaded to git repo)
-   
-   
+
                Build : mvn clean install -Dspring.profiles.active=non-prod
                
                Build Docker image (tag will be 'latest' by default): docker build -t playlists .
