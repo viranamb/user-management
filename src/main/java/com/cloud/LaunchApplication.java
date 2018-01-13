@@ -1,8 +1,11 @@
 package com.cloud;
 
+import com.cloud.filter.AuthenticationFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
@@ -11,12 +14,16 @@ import org.springframework.scheduling.annotation.EnableAsync;
 public class LaunchApplication {
 
     public static void main(String[] args) {
-        Math.min(1,2);
         SpringApplication.run(LaunchApplication.class, args);
     }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    @Bean
+    public FilterRegistrationBean authenticationFilter() {
+        final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter(new AuthenticationFilter());
+        registrationBean.addUrlPatterns("/secure/*");
+
+        return registrationBean;
     }
+
 }

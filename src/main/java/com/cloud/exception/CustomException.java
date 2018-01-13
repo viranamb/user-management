@@ -9,4 +9,6 @@ public class CustomException extends Exception {
         super(message, cause);
     }
 
+    public CustomException() {
+    }
 }

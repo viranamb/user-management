@@ -1,9 +1,7 @@
 FROM openjdk:8-jre-alpine
 MAINTAINER Vishwa <nambiarvishwajeet@gmail.com>
 
-ADD */playlist-0.0.1-SNAPSHOT.jar app.jar
-
-ADD content_preroll.json content_preroll.json
+ADD */users-0.0.1-SNAPSHOT.jar app.jar
 
 RUN sh -c 'touch /app.jar'
 
