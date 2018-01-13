@@ -8,7 +8,7 @@ REST-based microservice utilizing JDK 8, Spring boot, Docker, Maven, Mockito/JUn
  3. Get details of a user with given UUID.
  4. Search user by a given email address
 
- Embedded In-memory H2 database used
+ Embedded In-memory H2 database and SpringJDBCTemplate used
  
 
 ** Testing
