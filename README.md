@@ -1,4 +1,4 @@
-REST-based microservice utilizing JDK 8, Spring boot, Docker, Maven, Mockito/JUnit.
+REST-based microservice utilizing JDK 8, Spring boot, In-memory H2 database, SpringJDBCTemplate, Docker, Maven, Mockito/JUnit.
 
 
 
@@ -7,8 +7,6 @@ REST-based microservice utilizing JDK 8, Spring boot, Docker, Maven, Mockito/JUn
  2. Sign-in and get a JWT token
  3. Get details of a user with given UUID.
  4. Search user by a given email address
-
- Embedded In-memory H2 database and SpringJDBCTemplate used
  
 
 ** Testing
